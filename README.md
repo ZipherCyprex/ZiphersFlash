@@ -11,5 +11,5 @@ ZipherHID เป็นอุปกรณ์ทำ Keystroke injection (BAD USB) 
 - Keystroke injection
 - Wifi Attack (DEAUTH BEANCON EVIL-TWIN)
 
-[Document ZipherScript](https://zipher.gitbook.io/zipher-hid/syntax-full/keyboard-operator)
+[Document ZipherScript](https://zipher.gitbook.io/zipher-hid/get/basic-syntax)
 
