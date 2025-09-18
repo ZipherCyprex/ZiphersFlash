@@ -1,0 +1,16 @@
+{
+    "name": "Zipher HID V2.6.0",
+    "new_install_prompt_erase": true,
+    "builds": [
+        {
+            "chipFamily": "ESP32-S2",
+            "parts": [
+                {
+                    "path": "Zipher_last-merge.bin",
+                    "offset": 0,
+                    "type": "app"
+                }
+            ]
+        }
+    ]
+}

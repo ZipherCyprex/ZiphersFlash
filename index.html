@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="เว็บอัพเดทเฟิร์มแวร์ล่าสุดจาก Ziphers">
+    <meta name="keywords" content="Zipher, Duckyscript, Badusb,">
+    <meta name="author" content="Ziphers">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Zipher Update">
+<meta name="theme-color" content="#6a0dad">
+<link rel="apple-touch-icon" href="https://media.discordapp.net/attachments/1371435179704455208/1418120031467999242/image.png?ex=68ccf6b2&is=68cba532&hm=9eaa79cfc1aa0c5cced46aa53411aea8eb0f24be8051192d661c085e7b2e5c95&=&format=webp&quality=lossless">
+
+
+    <meta property="og:title" content="เว็บอัพเดทเฟิร์มแวร์ล่าสุด">
+    <meta property="og:description" content="เว็บอัพเดทเฟิร์มแวร์ล่าสุดจาก Ziphers">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1371435179704455208/1418120995734163528/CyprexChromium.png?ex=68ccf798&is=68cba618&hm=aa970c4a9b2efd67f82b7a0702d71711e8dd5b0b84ccf14f13449a9669bd9ab6&=&format=webp&quality=lossless&width=1659&height=866">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1371435179704455208/1418120031467999242/image.png?ex=68ccf6b2&is=68cba532&hm=9eaa79cfc1aa0c5cced46aa53411aea8eb0f24be8051192d661c085e7b2e5c95&=&format=webp&quality=lossless" type="image/png">
+
+
+    <title>Ziphers Flash</title>
+    <!-- Tailwind (no inline JS here) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ESP Web Tools install button -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10.0.0/dist/web/install-button.js?module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        html,
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+        }
+
+        /* Hide the default install button */
+        esp-web-install-button {
+            display: none;
+        }
+
+        /* Micro-interactions & a11y helpers */
+        html {
+            scroll-behavior: smooth
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: none
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none !important;
+                transform: none !important
+            }
+
+            
+            .parallax {
+                transform: none !important;
+                transition: none !important
+            }
+        }
+
+        /* Ripple helper */
+        .ripple {
+            position: relative;
+            overflow: hidden
+        }
+
+        .ripple>span.r {
+            position: absolute;
+            border-radius: 9999px;
+            pointer-events: none;
+            inset: auto;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, .25);
+            animation: rip .6s ease forwards
+        }
+
+        @keyframes rip {
+            from {
+                width: 0;
+                height: 0;
+                opacity: .4
+            }
+
+            to {
+                width: 280px;
+                height: 280px;
+                opacity: 0
+            }
+        }
+
+
+
+        /* Theme switch: dark(default) ↔ light (keep purple accent) */
+        body.theme-light {
+            background: #ffffff !important;
+            color: #0b1220 !important;
+            color-scheme: light;
+        }
+
+        body.theme-light header {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(0, 0, 0, 0.06)
+        }
+
+        body.theme-light footer {
+            color: rgba(17, 24, 39, .6);
+            border-color: rgba(0, 0, 0, .08)
+        }
+
+        body.theme-light .surface {
+            background: rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important
+        }
+
+        /* map white-utilities to dark text when light theme */
+        body.theme-light .text-white {
+            color: #111827 !important
+        }
+
+        body.theme-light .text-white\/70 {
+            color: rgba(17, 24, 39, .7) !important
+        }
+
+        body.theme-light .text-white\/60 {
+            color: rgba(17, 24, 39, .6) !important
+        }
+
+        body.theme-light .text-white\/50 {
+            color: rgba(17, 24, 39, .5) !important
+        }
+
+        body.theme-light .border-white\/10 {
+            border-color: rgba(0, 0, 0, .1) !important
+        }
+
+        body.theme-light .border-white\/5 {
+            border-color: rgba(0, 0, 0, .05) !important
+        }
+
+        body.theme-light .bg-white\/5 {
+            background: rgba(0, 0, 0, .04) !important
+        }
+
+        body.theme-light #bgBlob {
+            opacity: .18
+        }
+
+        /* Theme toggle button */
+        #themeToggle {
+            backdrop-filter: blur(6px)
+        }
+
+        body.theme-light #themeToggle {
+            background: rgba(0, 0, 0, .05);
+            border-color: rgba(0, 0, 0, .12);
+            color: #111827
+        }
+
+        /* Light mode: force full light UI (except purple accents) */
+        body.theme-light {
+            --page-bg: #ffffff;
+            --page-fg: #0b1220
+        }
+
+        body.theme-light {
+            background: var(--page-bg) !important;
+            color: var(--page-fg) !important
+        }
+
+        body.theme-light .bg-neutral-950 {
+            background: #ffffff !important
+        }
+
+        body.theme-light .text-white {
+            color: #0b1220 !important
+        }
+
+        body.theme-light .text-white\/70 {
+            color: rgba(17, 24, 39, .7) !important
+        }
+
+        body.theme-light .text-white\/60 {
+            color: rgba(17, 24, 39, .6) !important
+        }
+
+        body.theme-light .text-white\/50 {
+            color: rgba(17, 24, 39, .5) !important
+        }
+
+        body.theme-light .border-white\/10 {
+            border-color: rgba(0, 0, 0, .1) !important
+        }
+
+        body.theme-light .border-white\/5 {
+            border-color: rgba(0, 0, 0, .06) !important
+        }
+
+        body.theme-light .bg-white\/5 {
+            background: rgba(0, 0, 0, .04) !important
+        }
+
+        body.theme-light header {
+            background: rgba(255, 255, 255, .7) !important;
+            border-color: rgba(0, 0, 0, .06) !important
+        }
+
+        body.theme-light footer {
+            color: rgba(17, 24, 39, .6) !important;
+            border-color: rgba(0, 0, 0, .08) !important
+        }
+
+        body.theme-light .surface {
+            background: rgba(0, 0, 0, .04) !important;
+            border-color: rgba(0, 0, 0, .08) !important
+        }
+
+        body.theme-light .divider-line {
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .08), transparent) !important
+        }
+
+        /* hero gradient readable on white */
+        body.theme-light .hero-title {
+            background-image: linear-gradient(90deg, #111827, #111827, #6d28d9) !important;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        /* custom cursor visible on light */
+        body.theme-light #bgBlob {
+            opacity: .16
+        }
+
+        /* Keep some elements white in light mode */
+        body.theme-light .keep-white {
+            color: #ffffff !important
+        }
+
+        body.theme-light .keep-white svg {
+            color: #ffffff !important;
+            fill: currentColor
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-neutral-950 text-white">
+    <!-- Decorative BG -->
+    <div class="pointer-events-none fixed inset-0 -z-10">
+        <div id="bgBlob"
+            class="absolute -top-40 left-1/2 -translate-x-1/2 h-[40rem] w-[40rem] rounded-full blur-[140px] opacity-30 bg-gradient-to-tr from-purple-800 via-fuchsia-700 to-indigo-800">
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-20 border-b border-white/5 bg-black/30 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <span
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-800 to-indigo-800 text-white keep-white font-black">Z</span>
+                    <span class="text-lg font-semibold tracking-tight">Ziphers Flash</span>
+                </a>
+                <nav class="flex items-center gap-3 sm:gap-4 text-sm">
+                    <a href="https://zipher.gitbook.io/" class="hover:text-purple-300 transition">Document</a>
+                    <a href="https://discord.gg/x9HGCbFEeq" class="hover:text-purple-300 transition">Discord</a>
+                    <a href="#flash"
+                        class="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium hover:bg-white/10">Get
+                        Started</a>
+                    <button id="themeToggle" aria-label="Toggle theme" title="Toggle theme"
+                        class="ripple rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium hover:bg-white/10">
+                        <span id="themeIcon" class="inline-flex">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Flash section -->
+    <main id="flash" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section class="py-8 sm:py-12 min-h-[60vh] grid place-items-center">
+            <div class="mx-auto max-w-3xl text-center reveal">
+                <p
+                    class="mb-3 inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-white/70">
+                    The Future of Hardware Flashing</p>
+                <h1 class="text-2xl sm:text-5xl font-bold leading-tight">
+                    <span
+                        class="hero-title bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent">Flash your ZipherHID</span>
+                </h1>
+                <p class="mt-3 sm:mt-4 text-sm sm:text-base text-white/70">เลือกเวอร์ชั่นของเฟิร์มแวร์ แล้วกด <span
+                        class="font-semibold text-purple-300">Flash</span> เพื่อเริ่มอัปเดทอุปกรณ์.</p>
+            </div>
+
+            <!-- Card -->
+            <div
+                class=" reveal surface mx-auto mt-6 sm:mt-8 w-full max-w-xl rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 transition-opacity">
+                <div class="flex flex-col gap-3 md:gap-4 md:flex-row items-stretch md:items-end justify-center w-full">
+                    <!-- Version dropdown -->
+                    <label class="w-full md:flex-1 max-w-none min-w-0">
+                        <span class="mb-1 block text-xs uppercase tracking-wide text-white/60">Firmware Version</span>
+                        <select id="versionSelect"
+                            class="w-full h-[44px] rounded-xl border border-white/10 bg-neutral-900/80 px-3 text-[14px] outline-none ring-0 focus:border-purple-500 focus:outline-none"
+                            aria-label="Select firmware version">
+                            <!-- populated by JS -->
+                        </select>
+                    </label>
+
+                    <!-- Flash button -->
+                    <button id="flashBtn"
+                        class="keep-white ripple mx-auto md:mx-0 w-full md:w-auto md:min-w-[140px] inline-flex items-center justify-center gap-2 rounded-md bg-purple-700/90 px-[18px] py-[10px] min-h-[44px] text-[14px] font-semibold text-white ring-1 ring-purple-400/25 border border-purple-400/30 shadow-sm hover:bg-purple-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/70 transition disabled:cursor-not-allowed disabled:opacity-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path
+                                d="M13 2a1 1 0 0 1 .894.553l7 14A1 1 0 0 1 20 18h-7.382l.724 3.618a1 1 0 0 1-1.777.83l-8-10A1 1 0 0 1 4 10h7.382l-.724-3.618A1 1 0 0 1 13 2Z" />
+                        </svg>
+                        Flash
+                    </button>
+                </div>
+
+                <!-- Hidden native install button -->
+                <esp-web-install-button id="hiddenInstaller" manifest="" install-unsupported></esp-web-install-button>
+
+                <!-- Status / tips -->
+                <div id="tips" class="mt-4 text-xs text-white/60">
+                    <p>Tips:
+                        <span class="whitespace-nowrap">กด Flash แล้วเลือกพอร์ต USB</span> ·
+                        <span class="whitespace-nowrap">กด BOOT/IO0 ค้างไว้จนกว่าจะเสร็จ</span> ·
+                        <span class="whitespace-nowrap"></span>
+                    </p>
+                    <p>Fix:
+                        <span class="whitespace-nowrap">หากลอง Flash แล้วไม่ได้ผล</span> ·
+                        <span class="whitespace-nowrap text-sky-500"><a href="./manifests/v2.6.0/Zipher_last-merge.bin">Download</a></span> ·
+                        <span class="whitespace-nowrap">เอาไปแฟรชด้วยด้วยตัวที่ offset 0x0 ใน </span>
+                        <span class="whitespace-nowrap text-sky-500"><a href="https://esptool.spacehuhn.com/">Esp-Tool </a></span>·
+                        <span class="whitespace-nowrap text-sky-500"><a href="https://cdn.discordapp.com/attachments/1289922855215038521/1418115253874458716/image.png?ex=68ccf23f&is=68cba0bf&hm=1ad6149e7cae855a51919d3c3d93a9207dea234a93727913ac4812fef2bfa63f&">ภาพตัวอย่าง</a></span>
+                    </p>
+                    <p id="httpsWarning"
+                        class="mt-2 hidden rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-2 text-yellow-200">
+                        จำเป็นต้องเข้าผ่าน <span class="font-semibold">https://</span> (หรือ <code>localhost</code>)
+                        เพื่อให้เบราว์เซอร์ใช้ WebUSB ได้</p>
+                    <p id="usbMissing"
+                        class="mt-2 hidden rounded-lg border border-red-500/30 bg-red-500/10 p-2 text-red-200">
+                        เบราว์เซอร์ของคุณไม่รองรับ <span class="font-semibold">WebUSB</span>. แนะนำให้ใช้ Google Chrome
+                        หรือ Microsoft Edge เวอร์ชันล่าสุด</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider between flash and features -->
+        <div class="mx-auto max-w-7xl">
+            <div
+                class="divider-line my-8 sm:my-10 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent">
+            </div>
+        </div>
+
+        <!-- Features (6 cards) -->
+        <section class="pb-16 sm:pb-20">
+            <div class="mx-auto max-w-6xl">
+                <h2 class="mb-4 sm:mb-6 text-center text-xl sm:text-2xl font-bold">Features</h2>
+                <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- 1 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path
+                                    d="M13 2a1 1 0 0 1 .894.553l7 14A1 1 0 0 1 20 18h-7.382l.724 3.618a1 1 0 0 1-1.777.83l-8-10A1 1 0 0 1 4 10h7.382l-.724-3.618A1 1 0 0 1 13 2Z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Wireless Remote</h3>
+                        <p class="mt-1 text-sm text-white/70">ควบคุมไร้สายผ่านเว็บ Dashboard</p>
+                    </div>
+                    <!-- 2 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path d="M12 1a4 4 0 0 1 4 4v1h1a4 4 0 0 1 4 4v4a7 7 0 1 1-14 0V7a4 4 0 0 1 4-4Z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Ducky Compiler</h3>
+                        <p class="mt-1 text-sm text-white/70">เช็คคำสั่งในสคริปต์ - คำนวนเวลารันโดยประมาณ</p>
+                    </div>
+                    <!-- 3 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path d="M5 3a2 2 0 0 0-2 2v14l5-3 5 3 5-3 5 3V5a2 2 0 0 0-2-2H5Z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Buit-in Editor</h3>
+                        <p class="mt-1 text-sm text-white/70">เขียน Payload เสร็จในไม่กี่นาที และ ประหยัดเวลา</p>
+                    </div>
+                    <!-- 4 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0Zm5-1h8v2H8v-2Z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Auto Detect OS</h3>
+                        <p class="mt-1 text-sm text-white/70">วิเคราห์ OS ของ Host ได้ภายในไม่กี่วินาที
+                        </p>
+                    </div>
+                    <!-- 5 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path d="M12 2 7 12h4v8l5-10h-4l4-8z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Max Speed</h3>
+                        <p class="mt-1 text-sm text-white/70">ความเร็วสูงสุด 850 Keystroke/วินาที</p>
+                    </div>
+                    <!-- 6 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="h-5 w-5 text-white/70">
+                                <path d="M4 5h16v10H4V5Zm0 12h16v2H4v-2Z" />
+                            </svg></div>
+                        <h3 class="text-base font-semibold">Cross‑Platform</h3>
+                        <p class="mt-1 text-sm text-white/70">รองรับ Windows, macOS, Linux, Android, ChormeOS
+                        </p>
+                    </div>
+                    <!-- 7 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M10.706 3.294A12.6 12.6 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4q.946 0 1.852.148zM8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065 8.45 8.45 0 0 1 3.51-1.27zm2.596 1.404.785-.785q.947.362 1.785.907a.482.482 0 0 1 .063.745.525.525 0 0 1-.652.065 8.5 8.5 0 0 0-1.98-.932zM8 10l.933-.933a6.5 6.5 0 0 1 2.013.637c.285.145.326.524.1.75l-.015.015a.53.53 0 0 1-.611.09A5.5 5.5 0 0 0 8 10m4.905-4.905.747-.747q.886.451 1.685 1.03a.485.485 0 0 1 .047.737.52.52 0 0 1-.668.05 11.5 11.5 0 0 0-1.811-1.07M9.02 11.78c.238.14.236.464.04.66l-.707.706a.5.5 0 0 1-.707 0l-.707-.707c-.195-.195-.197-.518.04-.66A2 2 0 0 1 8 11.5c.374 0 .723.102 1.021.28zm4.355-9.905a.53.53 0 0 1 .75.75l-10.75 10.75a.53.53 0 0 1-.75-.75z" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Wifi Analyzer</h3>
+                        <p class="mt-1 text-sm text-white/70">วิเคราะห์และโจมตี Wifi ผ่าน USB เพียงอันเดียว</p>
+                    </div>
+                    <!-- 8 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M8.996 4.497c.104-.076.1-.168.186-.158s.022.102-.098.207c-.12.104-.308.243-.46.323-.291.152-.631.336-.993.336s-.647-.167-.853-.33c-.102-.082-.186-.162-.248-.221-.11-.086-.096-.207-.052-.204.075.01.087.109.134.153.064.06.144.137.241.214.195.154.454.304.778.304s.702-.19.932-.32c.13-.073.297-.204.433-.304M7.34 3.781c.055-.02.123-.031.174-.003.011.006.024.021.02.034-.012.038-.074.032-.11.05-.032.017-.057.052-.093.054-.034 0-.086-.012-.09-.046-.007-.044.058-.072.1-.089m.581-.003c.05-.028.119-.018.173.003.041.017.106.045.1.09-.004.033-.057.046-.09.045-.036-.002-.062-.037-.093-.053-.036-.019-.098-.013-.11-.051-.004-.013.008-.028.02-.034" />
+                            <path fill-rule="evenodd"
+                                d="M8.446.019c2.521.003 2.38 2.66 2.364 4.093-.01.939.509 1.574 1.04 2.244.474.56 1.095 1.38 1.45 2.32.29.765.402 1.613.115 2.465a.8.8 0 0 1 .254.152l.001.002c.207.175.271.447.329.698.058.252.112.488.224.615.344.382.494.667.48.922-.015.254-.203.43-.435.57-.465.28-1.164.491-1.586 1.002-.443.527-.99.83-1.505.871a1.25 1.25 0 0 1-1.256-.716v-.001a1 1 0 0 1-.078-.21c-.67.038-1.252-.165-1.718-.128-.687.038-1.116.204-1.506.206-.151.331-.445.547-.808.63-.5.114-1.126 0-1.743-.324-.577-.306-1.31-.278-1.85-.39-.27-.057-.51-.157-.626-.384-.116-.226-.095-.538.07-.988.051-.16.012-.398-.026-.648a2.5 2.5 0 0 1-.037-.369c0-.133.022-.265.087-.386v-.002c.14-.266.368-.377.577-.451s.397-.125.53-.258c.143-.15.27-.374.443-.56q.036-.037.073-.07c-.081-.538.007-1.105.192-1.662.393-1.18 1.223-2.314 1.811-3.014.502-.713.65-1.287.701-2.016.042-.997-.705-3.974 2.112-4.2q.168-.015.321-.013m2.596 10.866-.03.016c-.223.121-.348.337-.427.656-.08.32-.107.733-.13 1.206v.001c-.023.37-.192.824-.31 1.267s-.176.862-.036 1.128v.002c.226.452.608.636 1.051.601s.947-.304 1.36-.795c.474-.576 1.218-.796 1.638-1.05.21-.126.324-.242.333-.4.009-.157-.097-.403-.425-.767-.17-.192-.217-.462-.274-.71-.056-.247-.122-.468-.26-.585l-.001-.001c-.18-.157-.356-.17-.565-.164q-.069.001-.14.005c-.239.275-.805.612-1.197.508-.359-.09-.562-.508-.587-.918m-7.204.03H3.83c-.189.002-.314.09-.44.225-.149.158-.276.382-.445.56v.002h-.002c-.183.184-.414.239-.61.31-.195.069-.353.143-.46.35v.002c-.085.155-.066.378-.029.624.038.245.096.507.018.746v.002l-.001.002c-.157.427-.155.678-.082.822.074.143.235.22.48.272.493.103 1.26.069 1.906.41.583.305 1.168.404 1.598.305.431-.098.712-.369.75-.867v-.002c.029-.292-.195-.673-.485-1.052-.29-.38-.633-.752-.795-1.09v-.002l-.61-1.11c-.21-.286-.43-.462-.68-.5a1 1 0 0 0-.106-.008M9.584 4.85c-.14.2-.386.37-.695.467-.147.048-.302.17-.495.28a1.3 1.3 0 0 1-.74.19.97.97 0 0 1-.582-.227c-.14-.113-.25-.237-.394-.322a3 3 0 0 1-.192-.126c-.063 1.179-.85 2.658-1.226 3.511a5.4 5.4 0 0 0-.43 1.917c-.68-.906-.184-2.066.081-2.568.297-.55.343-.701.27-.649-.266.436-.685 1.13-.848 1.844-.085.372-.1.749.01 1.097.11.349.345.67.766.931.573.351.963.703 1.193 1.015s.302.584.23.777a.4.4 0 0 1-.212.22.7.7 0 0 1-.307.056l.184.235c.094.124.186.249.266.375 1.179.805 2.567.496 3.568-.218.1-.342.197-.664.212-.903.024-.474.05-.896.136-1.245s.244-.634.53-.791a1 1 0 0 1 .138-.061q.005-.045.013-.087c.082-.546.569-.572 1.18-.303.588.266.81.499.71.814h.13c.122-.398-.133-.69-.822-1.025l-.137-.06a2.35 2.35 0 0 0-.012-1.113c-.188-.79-.704-1.49-1.098-1.838-.072-.003-.065.06.081.203.363.333 1.156 1.532.727 2.644a1.2 1.2 0 0 0-.342-.043c-.164-.907-.543-1.66-.735-2.014-.359-.668-.918-2.036-1.158-2.983M7.72 3.503a1 1 0 0 0-.312.053c-.268.093-.447.286-.559.391-.022.021-.05.04-.119.091s-.172.126-.321.238q-.198.151-.13.38c.046.15.192.325.459.476.166.098.28.23.41.334a1 1 0 0 0 .215.133.9.9 0 0 0 .298.066c.282.017.49-.068.673-.173s.34-.233.518-.29c.365-.115.627-.345.709-.564a.37.37 0 0 0-.01-.309c-.048-.096-.148-.187-.318-.257h-.001c-.354-.151-.507-.162-.705-.29-.321-.207-.587-.28-.807-.279m-.89-1.122h-.025a.4.4 0 0 0-.278.135.76.76 0 0 0-.191.334 1.2 1.2 0 0 0-.051.445v.001c.01.162.041.299.102.436.05.116.109.204.183.274l.089-.065.117-.09-.023-.018a.4.4 0 0 1-.11-.161.7.7 0 0 1-.054-.22v-.01a.7.7 0 0 1 .014-.234.4.4 0 0 1 .08-.179q.056-.069.126-.073h.013a.18.18 0 0 1 .123.05c.045.04.08.09.11.162a.7.7 0 0 1 .054.22v.01a.7.7 0 0 1-.002.17 1.1 1.1 0 0 1 .317-.143 1.3 1.3 0 0 0 .002-.194V3.23a1.2 1.2 0 0 0-.102-.437.8.8 0 0 0-.227-.31.4.4 0 0 0-.268-.102m1.95-.155a.63.63 0 0 0-.394.14.9.9 0 0 0-.287.376 1.2 1.2 0 0 0-.1.51v.015q0 .079.01.152c.114.027.278.074.406.138a1 1 0 0 1-.011-.172.8.8 0 0 1 .058-.278.5.5 0 0 1 .139-.2.26.26 0 0 1 .182-.069.26.26 0 0 1 .178.081c.055.054.094.12.124.21.029.086.042.17.04.27l-.002.012a.8.8 0 0 1-.057.277c-.024.059-.089.106-.122.145.046.016.09.03.146.052a5 5 0 0 1 .248.102 1.2 1.2 0 0 0 .244-.763 1.2 1.2 0 0 0-.11-.495.9.9 0 0 0-.294-.37.64.64 0 0 0-.39-.133z" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Hacking & Pentesting</h3>
+                        <p class="mt-1 text-sm text-white/70">ทดสอบและเจาะระบบ ได้อย่างง่ายดาย</p>
+                    </div>
+                    <!-- 9 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4H6zM7 1v1h1V1zm2 0v1h1V1zM5.5 5a.5.5 0 0 0-.5.5V15a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V5.5a.5.5 0 0 0-.5-.5z" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Hardware Spoofing</h3>
+                        <p class="mt-1 text-sm text-white/70">ปลอมเป็นอุปกรณ์ในระบบไวท์ลิสต์</p>
+                    </div>
+                    <!-- 10 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M12.5 0H5.914a1.5 1.5 0 0 0-1.06.44L2.439 2.853A1.5 1.5 0 0 0 2 3.914V14.5A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 12.5 0m-7 2.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75m2 0a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75m2.75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 1.5 0m1.25-.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Self-Destruct</h3>
+                        <p class="mt-1 text-sm text-white/70">ทำลายตัวเองได้ในทันที ไม่เหลือข้อมูล</p>
+                    </div>
+                    <!-- 11 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Multi-Control</h3>
+                        <p class="mt-1 text-sm text-white/70">รอบรับโปโตคอล HID เมาส์, คีย์บอร์ด, มีเดีย, System</p>
+                    </div>
+                    <!-- 12 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M0 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M.91 7.204A3 3 0 0 1 2 7h12c.384 0 .752.072 1.09.204l-1.867-3.422A1.5 1.5 0 0 0 11.906 3H4.094a1.5 1.5 0 0 0-1.317.782z" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">USB Mass-Storage</h3>
+                        <p class="mt-1 text-sm text-white/70">จำลอง USB เป็นไดร์ฟพร้อมกับ HID</p>
+                    </div>
+                    <!-- 13 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Lock Language</h3>
+                        <p class="mt-1 text-sm text-white/70">เปลี่ยนการพิมพ์ภาษาเป็น Englist แม้จะใช้ภาษาอื่นอยุ่</p>
+                    </div>
+                    <!-- 14 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM9 8.466V7H7.5A1.5 1.5 0 0 0 6 8.5V11H5V8.5A2.5 2.5 0 0 1 7.5 6H9V4.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L9.41 8.658A.25.25 0 0 1 9 8.466" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Captive-Portal</h3>
+                        <p class="mt-1 text-sm text-white/70">ลดเวลาเข้าหน้าเว็บโดยจะ Pop-up ขึ้นมาเอง</p>
+                    </div>
+                    <!-- 15 -->
+                    <div
+                        class=" reveal surface rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 transition-opacity hover:opacity-95 hover:shadow-md ring-1 ring-transparent hover:ring-white/15">
+                        <div class="mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 text-white/70"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M10 0a2 2 0 1 1-4 0H3.5A1.5 1.5 0 0 0 2 1.5v13A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 12.5 0zM4.5 5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1m0 2h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
+                        </svg></div>
+                        <h3 class="text-base font-semibold">Evil-Portal</h3>
+                        <p class="mt-1 text-sm text-white/70">หน้าเว็บ Clone กับดักล่อเหยื่อ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-4 sm:py-3 text-center text-[11px] sm:text-xs text-white/50">
+        Copyright © 2024 - 2025 <span class="font-semibold">Ziphers</span>
+    </footer>
+
+    <script type="module">
+        // ---- Version config ----
+        // If you host versions.json (same folder), we'll fetch it automatically.
+        // Fallback to this inline list when the file is missing.
+        const FALLBACK_VERSIONS = [
+            {
+                label: 'Latest (v2.6.0)',
+                value: 'v2.6.0',
+                manifest: './manifests/v2.6.0/manifest.json'
+            },
+            {
+                label: 'v1.1.5',
+                value: 'v1.1.5',
+                manifest: 'https://example.com/manifests/v1.1.5/manifest.json'
+            },
+            {
+                label: 'v1.0.0 (Legacy)',
+                value: 'v1.0.0',
+                manifest: 'https://example.com/manifests/v1.0.0/manifest.json'
+            }
+        ];
+
+        const $select = document.getElementById('versionSelect');
+        const $flash = document.getElementById('flashBtn');
+        const $installer = document.getElementById('hiddenInstaller');
+        const $httpsWarn = document.getElementById('httpsWarning');
+        const $usbMissing = document.getElementById('usbMissing');
+
+        // Utility: detect secure context for WebUSB
+        const isSecure = window.isSecureContext || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (!isSecure) $httpsWarn.classList.remove('hidden');
+        if (!('usb' in navigator)) $usbMissing.classList.remove('hidden');
+
+        async function loadVersions() {
+            try {
+                const res = await fetch('./versions.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('no versions.json');
+                const list = await res.json(); // expected: [{label, value, manifest}]
+                return Array.isArray(list) && list.length ? list : FALLBACK_VERSIONS;
+            } catch (_) {
+                return FALLBACK_VERSIONS;
+            }
+        }
+
+        function populateSelect(items) {
+            $select.innerHTML = '';
+            for (const item of items) {
+                const opt = document.createElement('option');
+                opt.value = item.value;
+                opt.textContent = item.label;
+                opt.dataset.manifest = item.manifest;
+                $select.appendChild(opt);
+            }
+            // Default to first (latest)
+            if ($select.options.length) $select.selectedIndex = 0;
+            applyManifestFromSelect();
+        }
+
+        function applyManifestFromSelect() {
+            const opt = $select.options[$select.selectedIndex];
+            const manifest = opt?.dataset?.manifest || '';
+            if (!manifest) return;
+            // Update both attribute and property for safety
+            $installer.setAttribute('manifest', manifest);
+            $installer.manifest = manifest;
+        }
+
+        async function triggerInstall() {
+            // Make sure manifest is set (in case user clicked ASAP)
+            applyManifestFromSelect();
+
+            // Ensure custom element is ready
+            await customElements.whenDefined('esp-web-install-button');
+
+            // Try public API first, else click the shadow button
+            try {
+                if (typeof $installer.open === 'function') {
+                    await $installer.open();
+                } else if ($installer.shadowRoot) {
+                    const realBtn = $installer.shadowRoot.querySelector('button');
+                    if (realBtn) realBtn.click();
+                    else $installer.click();
+                } else {
+                    $installer.click();
+                }
+            } catch (e) {
+                console.error('Failed to open installer', e);
+            }
+        }
+
+        $select.addEventListener('change', applyManifestFromSelect);
+        $flash.addEventListener('click', triggerInstall);
+
+        // Init
+        const versions = await loadVersions();
+        populateSelect(versions);
+
+        // ===== Theme toggle (persist in localStorage) =====
+        const THEME_KEY = 'ziphers-theme';
+        const root = document.body;
+        const btnTheme = document.getElementById('themeToggle');
+        const iconTheme = document.getElementById('themeIcon');
+
+        function applyTheme(t) {
+            const light = t === 'light' || (t === 'auto' && window.matchMedia('(prefers-color-scheme: light)').matches);
+            root.classList.toggle('theme-light', light);
+            iconTheme.textContent = light ? '☀️' : '🌙';
+        }
+        function getTheme() { return localStorage.getItem(THEME_KEY) || 'dark'; }
+        function setTheme(t) { localStorage.setItem(THEME_KEY, t); applyTheme(t); }
+
+        applyTheme(getTheme());
+        btnTheme?.addEventListener('click', () => {
+            const cur = getTheme();
+            setTheme(cur === 'light' ? 'dark' : 'light');
+        });
+
+        // ===== Interactions (awwwards-like, but lightweight) =====
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Scroll reveal
+        if (!reduceMotion) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); io.unobserve(e.target); } });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('reveal-visible'));
+        }
+
+        // Ripple on clickable elements with .ripple
+        document.querySelectorAll('.ripple').forEach(btn => {
+            btn.addEventListener('click', (ev) => {
+                const r = document.createElement('span');
+                r.className = 'r';
+                const rect = btn.getBoundingClientRect();
+                r.style.left = (ev.clientX - rect.left) + 'px';
+                r.style.top = (ev.clientY - rect.top) + 'px';
+                btn.appendChild(r);
+                setTimeout(() => r.remove(), 700);
+            });
+        });
+
+        // Parallax removed for stability
+        // Tilt removed for stability
+
+        // Custom cursor removed for stability
+    </script>
+</body>
+
+</html>
