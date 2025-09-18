@@ -1,0 +1,16 @@
+{
+    "name": "Zipher HID V2.4.8",
+    "new_install_prompt_erase": true,
+    "builds": [
+        {
+            "chipFamily": "ESP32-S2",
+            "parts": [
+                {
+                    "path": "Zipher_last_Autorun+vid248.bin",
+                    "offset": 0,
+                    "type": "app"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Zipher HID V2.5.4",
+    "new_install_prompt_erase": true,
+    "builds": [
+        {
+            "chipFamily": "ESP32-S2",
+            "parts": [
+                {
+                    "path": "Zipher_HID_Realtime254.bin",
+                    "offset": 0,
+                    "type": "app"
+                }
+            ]
+        }
+    ]
+}
